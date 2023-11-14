@@ -1,51 +1,50 @@
-"use client";
-
-import Logo from "@/assets/svg/logo.svg";
-import Link from "next/link";
-import { PrismicNextLink } from "@prismicio/next";
-import Button from "@/components/Button";
-import MenuToggle from "@/components/MenuToggle";
-import { useState } from "react";
-import { Content } from "@prismicio/client";
-import clsx from "clsx";
+import Logo from '@/assets/svg/logo.svg'
+import Link from 'next/link'
+import { PrismicNextLink } from '@prismicio/next'
+import Button from '@/components/Button'
+import MenuToggle from '@/components/MenuToggle'
+import { useState } from 'react'
+import { Content } from '@prismicio/client'
+import clsx from 'clsx'
+import Image from 'next/image'
 
 type Props = {
-  layout: Content.LayoutDocument;
-};
+  layout: Content.LayoutDocument
+}
 
 export default function Header({ layout }: Props) {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const toggleMenu = () => {
-    setMenuOpen((prev) => !prev);
-  };
+    setMenuOpen(prev => !prev)
+  }
 
   return (
-    <header className="top-0 z-40 sticky py-6 lg:py-0 bg-white">
-      <span className="z-20 border-b w-full absolute bottom-0 left-0 border-[#EEEEEE] dark:border-[#505050]" />
-      <nav className="container flex items-center justify-between">
-        <Link href="/" className="relative flex items-center z-10 lg:pr-8">
-          <Logo className="h-7 w-auto" title="Prismic Logotype" />
+    <header className='sticky top-0 z-40 bg-white py-6 lg:py-0'>
+      <span className='absolute bottom-0 left-0 z-20 w-full border-b border-[#EEEEEE] dark:border-[#505050]' />
+      <nav className='container flex items-center justify-between'>
+        <Link href='/' className='relative z-10 flex items-center lg:pr-8'>
+          <Image src={Logo} alt='logo' className='h-7 w-auto' />
         </Link>
         <MenuToggle onClick={toggleMenu} isOpen={menuOpen} />
         <div
           className={clsx(
-            "fixed grow overflow-auto bottom-0 max-lg:transition-all lg:transition-opacity duration-200 right-0 lg:w-auto lg:p-0 border-l lg:border-none flex flex-col lg:items-center lg:flex-row lg:static lg:space-x-8 bg-white border-[#EEEEEE]",
+            'fixed bottom-0 right-0 flex grow flex-col overflow-auto border-l border-[#EEEEEE] bg-white duration-200 max-lg:transition-all lg:static lg:w-auto lg:flex-row lg:items-center lg:space-x-8 lg:border-none lg:p-0 lg:transition-opacity',
             menuOpen
-              ? "opacity-100 w-full mr-0 top-24"
-              : "opacity-0 w-full pointer-events-none lg:opacity-100 lg:pointer-events-auto lg:w-auto lg:mr-0"
+              ? 'top-24 mr-0 w-full opacity-100'
+              : 'pointer-events-none w-full opacity-0 lg:pointer-events-auto lg:mr-0 lg:w-auto lg:opacity-100'
           )}
         >
-          <div className="order-2 lg:order-1 container lg:px-0 lg:mx-0 lg:w-auto grow">
-            <ul className="flex flex-col lg:items-center lg:flex-row lg:justify-center">
-              {layout.data.navigation.map((item, i) => (
+          <div className='container order-2 grow lg:order-1 lg:mx-0 lg:w-auto lg:px-0'>
+            <ul className='flex flex-col lg:flex-row lg:items-center lg:justify-center'>
+              {layout.data.navigation.map((item: any, i: number) => (
                 <li
                   key={i}
-                  className="relative bg-white dark:bg-gray-15 border-[#EEEEEE] dark:border-[#505050] last:border-b lg:border-none z-10 lg:px-3 lg:py-9"
+                  className='dark:bg-gray-15 relative z-10 border-[#EEEEEE] bg-white last:border-b dark:border-[#505050] lg:border-none lg:px-3 lg:py-9'
                 >
                   <PrismicNextLink
                     field={item.link}
-                    className="font-medium flex items-center border-t border-[#EEEEEE] w-full py-4 lg:py-0 lg:border-none underline-offset-8 focus:outline-none focus:underline"
+                    className='flex w-full items-center border-t border-[#EEEEEE] py-4 font-medium underline-offset-8 focus:underline focus:outline-none lg:border-none lg:py-0'
                   >
                     {item.label}
                   </PrismicNextLink>
@@ -53,8 +52,8 @@ export default function Header({ layout }: Props) {
               ))}
             </ul>
           </div>
-          <div className="container lg:mx-0 lg:w-auto lg:max-w-none justify-end order-1 lg:order-2 flex flex-col sm:flex-row sm:items-center sm:gap-x-4 p-6 lg:p-0 bg-white dark:bg-gray-15 relative z-10">
-            {layout.data.call_to_actions.map((item, i) => (
+          <div className='dark:bg-gray-15 container relative z-10 order-1 flex flex-col justify-end bg-white p-6 sm:flex-row sm:items-center sm:gap-x-4 lg:order-2 lg:mx-0 lg:w-auto lg:max-w-none lg:p-0'>
+            {layout.data.call_to_actions.map((item: any, i: number) => (
               <Button field={item.link} key={i} style={item.style}>
                 {item.label}
               </Button>
@@ -63,5 +62,5 @@ export default function Header({ layout }: Props) {
         </div>
       </nav>
     </header>
-  );
+  )
 }

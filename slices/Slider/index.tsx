@@ -11,15 +11,7 @@ import 'swiper/css'
 import { PrismicNextImage } from '@prismicio/next'
 import Copy from '@/components/Copy'
 
-/**
- * Props for `Slider`.
- */
-export type SliderProps = SliceComponentProps<Content.SliderSlice>
-
-/**
- * Component for "Slider" Slices.
- */
-const Slider = ({ slice }: SliderProps): JSX.Element => {
+const Slider = ({ slice }: any): JSX.Element => {
   const thumbsSwiper = useRef<SwiperRef>()
   const [activeSlide, setActiveSlide] = useState(0)
   const [instance, setInstance] = useState<SwiperClass | null>(null)
@@ -48,7 +40,7 @@ const Slider = ({ slice }: SliderProps): JSX.Element => {
             style={{ overflow: 'visible' }}
             className='thumb-swiper mt-8 w-[100px] md:mt-16'
           >
-            {slice.items.map((item, index) => (
+            {slice.items.map((item: any, index: number) => (
               <SwiperSlide key={index}>
                 <PaginationBullet
                   index={index}
@@ -74,7 +66,7 @@ const Slider = ({ slice }: SliderProps): JSX.Element => {
             setActiveSlide(swiper.activeIndex)
           }}
         >
-          {slice.items.map((item, index) => (
+          {slice.items.map((item: any, index: number) => (
             <SwiperSlide key={index} className={`video-slide-${index}`}>
               <div className='grid w-full grid-cols-12 items-start gap-6'>
                 <div className='relative col-span-12 overflow-hidden rounded-xl md:col-span-8'>

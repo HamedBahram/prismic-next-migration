@@ -1,43 +1,32 @@
 import { SliceZone } from '@prismicio/react'
-import { components } from '@/slices'
+import { Content } from '@prismicio/client'
 import { createClient } from '@/prismicio'
-import { PageDocument } from '@/prismicio-types'
 
-// export async function generateMetadata() {
-//   const client = createClient()
-
-//   const page = await client.getByUID('page', 'home').catch(() => notFound())
-
-//   return {
-//     title: page.data.meta_title,
-//     description: page.data.meta_description,
-//     type: 'website',
-//     openGraph: {
-//       title: page.data.meta_title,
-//       description: page.data.meta_description
-//     }
-//   }
-// }
+import { components } from '@/slices'
+import Layout from '@/components/Layout'
 
 type Props = {
-  page: PageDocument
+  page: Content.PageDocument
+  layout: Content.LayoutDocument
 }
 
-export default function Home({ page }: Props) {
+export default function Home({ page, layout }: Props) {
   return (
-    <main>
+    <Layout page={page} layout={layout}>
       <SliceZone slices={page.data.slices} components={components} />
-    </main>
+    </Layout>
   )
 }
 
 export async function getStaticProps() {
   const client = createClient()
   const page = await client.getByUID('page', 'home')
+  const layout = await client.getSingle('layout')
 
   return {
     props: {
-      page
+      page,
+      layout
     }
   }
 }
