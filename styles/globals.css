@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.container {
+  @apply 3xl:max-w-[90rem] 2xl:max-w-[83.5rem];
+}
+
+.thumb-swiper .swiper-slide {
+  @apply w-auto !important;
+}
+
+.thumb-swiper {
+  @apply ml-0 mr-0 !important;
+}

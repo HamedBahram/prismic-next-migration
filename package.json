@@ -13,9 +13,11 @@
     "@prismicio/client": "^7.3.1",
     "@prismicio/next": "^1.4.0",
     "@prismicio/react": "^2.7.3",
+    "framer-motion": "^10.16.5",
     "next": "14.0.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "swiper": "^11.0.4"
   },
   "devDependencies": {
     "@slicemachine/adapter-next": "^0.3.24",
@@ -23,6 +25,8 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
     "eslint": "^8",
     "eslint-config-next": "14.0.2",
     "postcss": "^8",

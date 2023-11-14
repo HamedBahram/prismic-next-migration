@@ -1,15 +1,43 @@
-import { Inter } from 'next/font/google'
+import { SliceZone } from '@prismicio/react'
+import { components } from '@/slices'
+import { createClient } from '@/prismicio'
+import { PageDocument } from '@/prismicio-types'
 
-const inter = Inter({ subsets: ['latin'] })
+// export async function generateMetadata() {
+//   const client = createClient()
 
-export default function Home() {
+//   const page = await client.getByUID('page', 'home').catch(() => notFound())
+
+//   return {
+//     title: page.data.meta_title,
+//     description: page.data.meta_description,
+//     type: 'website',
+//     openGraph: {
+//       title: page.data.meta_title,
+//       description: page.data.meta_description
+//     }
+//   }
+// }
+
+type Props = {
+  page: PageDocument
+}
+
+export default function Home({ page }: Props) {
   return (
-    <main className={inter.className}>
-      <section className='py-24'>
-        <div className='container'>
-          <h1 className='text-3xl font-bold'>Prismic Next Migration</h1>
-        </div>
-      </section>
+    <main>
+      <SliceZone slices={page.data.slices} components={components} />
     </main>
   )
+}
+
+export async function getStaticProps() {
+  const client = createClient()
+  const page = await client.getByUID('page', 'home')
+
+  return {
+    props: {
+      page
+    }
+  }
 }
