@@ -37,9 +37,9 @@ function HamburgerIcon({ className }: { className?: string }) {
       xmlns='http://www.w3.org/2000/svg'
       className={className}
     >
-      <path d='M4 7H20' stroke='currentColor' stroke-width='1.5' />
-      <path d='M4 12H20' stroke='currentColor' stroke-width='1.5' />
-      <path d='M4 17H20' stroke='currentColor' stroke-width='1.5' />
+      <path d='M4 7H20' stroke='currentColor' strokeWidth='1.5' />
+      <path d='M4 12H20' stroke='currentColor' strokeWidth='1.5' />
+      <path d='M4 17H20' stroke='currentColor' strokeWidth='1.5' />
     </svg>
   )
 }
@@ -55,12 +55,12 @@ function CloseIcon({ className }: { className?: string }) {
       <path
         d='M7.75732 7.75732L16.2426 16.2426'
         stroke='currentColor'
-        stroke-width='1.5'
+        strokeWidth='1.5'
       />
       <path
         d='M7.75732 16.2426L16.2426 7.75727'
         stroke='currentColor'
-        stroke-width='1.5'
+        strokeWidth='1.5'
       />
     </svg>
   )

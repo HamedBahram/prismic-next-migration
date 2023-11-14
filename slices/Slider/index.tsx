@@ -120,8 +120,8 @@ function ChevronIcon({ className }: { className?: string }) {
       <path
         d='M8 10L12 14L16 10'
         stroke='currentColor'
-        stroke-width='1.5'
-        stroke-linecap='square'
+        strokeWidth='1.5'
+        strokeLinecap='square'
       />
     </svg>
   )
